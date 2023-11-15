@@ -2,7 +2,7 @@
 #include <vector>
 #include <fstream>
 #include <cstring>
-
+#include "exo4_matrices_adjacence.h"
 std::vector<std::vector<int>> adj;
 std::vector<std::vector<int>> span;
 /*
@@ -25,7 +25,7 @@ void initMatrix(std::vector<std::vector<int>>& matrix, int size) {
 void spanningTree(const std::string& filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
-        std::cerr << "Erreur lors de l'ouverture du fichier output'" << filename << "': "
+        std::cerr << "Erreur lors de l'ouverture du fichier input'" << filename << "': "
                   << strerror(errno) << std::endl;  // Include error details
         return;
     }
@@ -78,13 +78,13 @@ void writeSpanningTree(const std::string& filename) {
 }
 
 
-int main() {
+int ex4_1() {
 
 
-    spanningTree("../INPARBGRAPH.TXT");
+    spanningTree("../exo4/INPARBGRAPH.TXT");
     std::vector<bool> visited(adj.size(), false);
     dfs(1, visited);
-    writeSpanningTree("../OUTARBGRAPH.TXT");
+    writeSpanningTree("../exo4/OUTARBGRAPH.TXT");
 
     return 0;
 }

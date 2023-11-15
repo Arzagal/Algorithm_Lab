@@ -2,34 +2,36 @@
 // Created by louis on 11/10/23.
 //
 #include <iostream>
-
-
-void findXfrom1(int X){
-    int temp = 1;
-    int count=0;
+#include <vector>
+#include "exo1.h"
+// On utilise l'algorithme de syracuse
+void findXfrom1(int X) {
+    int temp = X; // On part du resultat
     std::cout << "1";
-    while(temp!=X && count <10000){
-        if(X>temp){
-            temp = temp *2;
-            std::cout <<"*2";
+    std::vector<bool> res;
+    while (temp != 1) { //On itere tant que l'on a aps atteint 1, le resultat voulu
+        if (temp % 2 == 0) { // On divise par 2 si c'est pair
+            temp = temp / 2;
+            res.push_back(true);
+        } else {
+            temp = temp * 3 + 1; // Sinon
+            res.push_back(false);
         }
-        else{
-            temp = int(temp/3);
-            std::cout <<"/3";
+    }
+    for (int i = res.size()-1; i>=0; i--){ // On reconstruit le resultat a afficher a partir des valeurs stockées
+        if (res[i]) {
+            std::cout << " *2";
+        } else {
+            std::cout << " /3";
         }
-        count++;
     }
-    if(temp != X){
-        std::cout << "\n no results found !\n";
-    }
-    else{
-        std::cout << " = X\n We found a solution !\n";
-    }
+    std::cout << "  = X\n";
+    std::cout << "Goodbye Syracuse \n";
 }
-//int main(int argc, char * argv[]){
-//    int X;
-//    std::cout << "Welcome in the Exercice 1 program \n";
-//    std::cout << "Please enter the goal number\n";
-//    std::cin>>X;
-//    findXfrom1(X);
-//}
+void ex1(){
+    int X;
+    std::cout << "Welcome in the Exercice 1 program \n";
+    std::cout << "Please enter the goal number\n";
+    std::cin>>X;
+    findXfrom1(X);
+}

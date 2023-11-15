@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
-
+#include "exo4_liste_adjacence.h"
 
 
 
@@ -72,16 +72,15 @@ void writeSpanningTree2(const std::string& filename, const std::vector<AdjList>&
     file.close();
 }
 
-/*
-int main() {
+int ex4_2() {
 
 
-    spanningTree2("../INPARBGRAPH.TXT");
+    spanningTree2("../exo4/INPARBGRAPH.TXT");
     std::vector<bool> visited2(listAdj.size(), false);
     std::vector<AdjList> myAdjList(listAdj.size());
     dfs2(1, visited2, myAdjList);
-    writeSpanningTree2("../OUTARBGRAPH.TXT", myAdjList);
+    writeSpanningTree2("../exo4/OUTARBGRAPH.TXT", myAdjList);
 
     return 0;
 }
-*/
+
