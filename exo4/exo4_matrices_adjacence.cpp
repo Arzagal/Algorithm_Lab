@@ -9,8 +9,8 @@ std::vector<std::vector<int>> span;
  * Cette fonction ajoute une branche du graphe dans la matrice d'ajacence
  * */
 void addEdge(int x, int y) {
-    adj[x-1][y-1] = 1;
-    adj[y-1][x-1] = 1;
+    adj[x-1][y-1] ++;
+    adj[y-1][x-1] ++;
 }
 /*
  * Ici nous initialisons la matrice d'ajacence avec des zeros a l'interieur
@@ -50,7 +50,7 @@ void spanningTree(const std::string& filename) {
 void dfs(int start, std::vector<bool>& visited) {
     visited[start] = true;
     for (int i = 0; i < adj[start].size(); ++i) {
-        if (adj[start][i] == 1 && !visited[i]) {
+        if (adj[start][i] !=0 && !visited[i]) {
             span[start][i] = 1;
             dfs(i, visited);
         }
