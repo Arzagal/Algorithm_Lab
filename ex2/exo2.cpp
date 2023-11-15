@@ -21,7 +21,6 @@ std::vector<int> findsousseq(int n, int a[]) {
     Note : cette version n'est  pas optimale : jaurais du fairre un tableau de taille n*2, et stocker a la collone i
     la taille maximale de la suite finissant par lelement i et l'indice de l'element precedent.
     */
-    std::vector<int> res; //Variable qui servira a stocker le resultat
     std::vector<int> vecind; //Variable qui stock les indices des elements de la suite, on lutilisera pour remplir le resultat
     int ind;
     int i,j,k;
@@ -41,48 +40,50 @@ std::vector<int> findsousseq(int n, int a[]) {
         }
     }
 
-    std::ofstream output_file;
-    output_file.open("../ex2/OUTMONOSEQ.TXT"); // On ouvre ou crée si il n'existe pas le fichier de résultat
-    output_file << res_max; // On écrit sur la premiere ligne la taille du résultat
-    output_file << "\n";
+
     //std::cout << res_max; // Ligne de vérification
     for (k = 0; k < res_max; k++) { //On construit les vecteurs résulats en remontant les indices
         vecind.insert(vecind.begin(),ind);
-        res.insert(res.begin(), a[ind]);
         ind = array[ind][2];
     }
-    for (k = 0; k < res_max; k++) {
-        output_file << "a[";
-        output_file << vecind[k];
-        output_file << "] = ";
-        output_file << res[k];
-        output_file << "\n"; //Simple mise en forme du résultat dans le
-    }
-    output_file.close();
-    return res;
+
+    return vecind;
 }
 
-int main(){
-    std::fstream input_file;
-    input_file.open("../ex2/INPMONOSEQ.TXT");
-    int n;
-    int a[100] ;
-    char tempC[100];
-    int h = 0;
-    if(input_file.is_open()){
-        std::string temp;
-        std::getline(input_file, temp);
-        n = stoi(temp);
-
-        std::getline(input_file, temp);
-        std::stringstream temps(temp);
-        std::string number;
-        while(temps>>number && h<n) {
-            a[h] = stoi(number);
-            h++;
-        }
-    }
-    input_file.close();
-    std::vector<int> resultat = findsousseq(n, a);
-    return 0;
-}
+//int main(){
+//    std::fstream input_file;
+//    input_file.open("../ex2/INPMONOSEQ.TXT"); // On ouvre le fichier contenant les entrées
+//    int n,k;
+//    int a[100] ;
+//    int h = 0; //On d"finit les variables que l'on va utiliser
+//    if(input_file.is_open()){
+//        std::string temp;
+//        std::getline(input_file, temp); // On récupère la première ligne du fichier
+//        n = stoi(temp); // Cette ligne ne comprends que le nombre n, on le copie directement
+//
+//        std::getline(input_file, temp); // On récupère la deuxieme ligne
+//        std::stringstream temps(temp); // Cette ligne comprends plusieurs éléments, on la découpe
+//        std::string number; //variable tampon
+//        while(temps>>number && h<n) { // On parcours les éléments ainsi obtenus, tant que l'on a apas dépassé la taille n fournie précédemment
+//            a[h] = stoi(number); // On copie l'élément dans la variable d'entrée
+//            h++;
+//        }
+//    }
+//    input_file.close();
+//    std::vector<int> resultat = findsousseq(n, a); // On appelle la fonction décrite ci-desssus, permettant de rsoudre l'exercice
+//
+//    int res_max = resultat.size(); // La taille n du résultat, qu'il nous faut récupérer
+//    std::ofstream output_file;
+//    output_file.open("../ex2/OUTMONOSEQ.TXT"); // On ouvre ou crée si il n'existe pas le fichier de résultat
+//    output_file << res_max; // On écrit sur la premiere ligne la taille du résultat
+//    output_file << "\n";
+//    for (k = 0; k < res_max; k++) {
+//        output_file << "a[";
+//        output_file << resultat[k];
+//        output_file << "] = ";
+//        output_file << a[resultat[k]];
+//        output_file << "\n"; //Simple mise en forme du résultat dans le
+//    }
+//    output_file.close();
+//    return 0;
+//}
