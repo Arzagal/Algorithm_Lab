@@ -60,7 +60,7 @@ std::vector<int> getSousSeq(int a[], int n, int k){
 
 
 
-void ex3(){
+int ex3(){
     std::fstream input_file; // La gestion des fichiers dentree est sortie est la meme que ppur l'ex2
     input_file.open("INPDIVSEQ.TXT");
     int n, k;

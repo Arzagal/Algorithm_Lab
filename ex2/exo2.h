@@ -10,5 +10,5 @@
 #define TP_ALGO_EXO2_H
 
 std::vector<int> findsousseq(int n, int a[]);
-void ex2();
+int ex2();
 #endif //TP_ALGO_EXO2_H

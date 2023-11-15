@@ -11,5 +11,5 @@
 #define TP_ALGO_EXO3_H
 
 std::vector<int> getSousSeq(int a[], int n, int k);
-void ex3();
+int ex3();
 #endif //TP_ALGO_EXO3_H

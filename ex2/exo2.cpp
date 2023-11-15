@@ -50,7 +50,7 @@ std::vector<int> findsousseq(int n, int a[]) {
     return vecind;
 }
 
-void ex2(){
+int ex2(){
     std::fstream input_file;
     input_file.open("INPMONOSEQ.TXT"); // On ouvre le fichier contenant les entrées
     int n,k;
